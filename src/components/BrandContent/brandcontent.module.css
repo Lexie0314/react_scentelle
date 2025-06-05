@@ -1,0 +1,193 @@
+/* 基本重置與字型 */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: "Noto Sans TC", sans-serif;
+  color: #333;
+  background: #fff;
+}
+
+/* 滿版 hero */
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 60vh;
+  background-image: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80");
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroOverlay {
+  background-color: rgba(0, 0, 0, 0.35);
+  padding: 2rem 3rem;
+  text-align: center;
+  color: #fff;
+  border-radius: 12px;
+}
+
+.heroTitle {
+  font-size: 4rem;
+  letter-spacing: 0.2em;
+  margin: 0 0 0.3rem;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* 主內容區 */
+.main {
+  max-width: 1200px;
+  margin: 3rem auto 6rem;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+/* 區塊樣式 */
+.section {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  opacity: 0;
+  transform: translateY(40px);
+  animation-fill-mode: forwards;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+}
+
+.text {
+  flex: 1;
+}
+
+.text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.text p,
+.text ul {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #838383;
+  margin: 0;
+}
+
+.text ul {
+  padding-left: 1.5rem;
+}
+
+.text ul li {
+  margin-bottom: 0.8rem;
+  position: relative;
+  list-style: none;
+}
+
+.text ul li::before {
+  content: "•";
+  position: absolute;
+  left: -1rem;
+  color: #7f8b9a;
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.imageWrapper {
+  flex: 1;
+  max-width: 500px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.imageWrapper img:hover {
+  transform: scale(1.05);
+}
+
+/* 動畫：往上淡入 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+/* 時間軸樣式 */
+.timeline {
+  list-style: none;
+  padding-left: 0;
+}
+
+.timeline li {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #444;
+}
+
+/* 手機版調整 */
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .imageWrapper {
+    max-width: 100%;
+  }
+  
+  .hero {
+    height: 40vh;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+    letter-spacing: 0.15em;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+}
+
+.timelineWrapper {
+  position: relative;
+  height: 400vh; /* 根據你有幾個 page 調整，假設有 4 頁就 400vh */
+  width: 100vw; /* 滿版寬度 */
+  margin-left: calc(-50vw + 50%); /* 讓它從螢幕左邊開始 */
+  margin-right: calc(-50vw + 50%);
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+
+/* sticky 的時間軸區塊本體 */
+.timelineSticky {
+  position: sticky;
+  top: 80px; /* sticky 開始固定的位置，視你 header 高度而定 */
+}
